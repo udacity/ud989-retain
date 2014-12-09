@@ -1,0 +1,33 @@
+*,
+*:before,
+*:after {box-sizing: border-box;}
+
+.new-note-form {
+    margin-bottom: 15px;
+}
+.new-note-content {
+    width:100%;
+    display: block;
+    font-size: 1.3em;
+}
+
+.notes {
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+}
+.note {
+    display: inline-block;
+    width: 250px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding:10px;
+    list-style-type: none;
+    background-color: #cde;
+}
+
+.note-date {
+    font-size:0.7em;
+    margin-bottom: 10px;
+    display: block;
+}
