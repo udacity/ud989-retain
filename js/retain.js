@@ -7,7 +7,7 @@ $(function(){
             }
         },
         add: function(obj) {
-            var data = JSON.parse(localStorage.notes);
+            var data = this.getAllNotes();
             data.push(obj);
             localStorage.notes = JSON.stringify(data);
         },
