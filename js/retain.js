@@ -20,13 +20,14 @@ $(function(){
     var octopus = {
         addNewNote: function(noteStr) {
             model.add({
-                content: noteStr
+                content: noteStr,
+                dateSubmitted: Date.now()
             });
             view.render();
         },
 
         getNotes: function() {
-            return model.getAllNotes();
+            return model.getAllNotes().reverse();
         },
 
         init: function() {
@@ -52,6 +53,7 @@ $(function(){
             var htmlStr = '';
             octopus.getNotes().forEach(function(note){
                 htmlStr += '<li class="note">'+
+                        '<span class="note-date">' + new Date(note.dateSubmitted).toString() + '</span>'+
                         note.content +
                     '</li>';
             });
