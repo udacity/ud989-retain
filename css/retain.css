@@ -2,9 +2,6 @@
 *:before,
 *:after {box-sizing: border-box;}
 
-.note-date{
-    font-style: italic;
-}
 
 .new-note-form {
     margin-bottom: 15px;
