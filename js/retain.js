@@ -1,5 +1,5 @@
-$(function(){
-
+(function(){
+    
     var model = {
         init: function() {
             if (!localStorage.notes) {
@@ -38,26 +38,28 @@ $(function(){
 
     var view = {
         init: function() {
-            this.noteList = $('#notes');
-            var newNoteForm = $('#new-note-form');
-            var newNoteContent = $('#new-note-content');
-            newNoteForm.submit(function(e){
-                octopus.addNewNote(newNoteContent.val());
-                newNoteContent.val('');
+            this.noteList = document.getElementById("notes");
+            var newNoteForm = document.getElementById("new-note-form");
+            var newNoteContent = document.getElementById("new-note-content");
+            newNoteForm.addEventListener("submit", (e) => {
+                octopus.addNewNote(newNoteContent.value);
+                newNoteContent.value = "";
                 e.preventDefault();
             });
             view.render();
         },
         render: function(){
-            var htmlStr = '';
-            octopus.getNotes().forEach(function(note){
-                htmlStr += '<li class="note">'+
-                        note.content +
-                    '</li>';
+            while (this.noteList.childNodes.length) {
+                this.noteList.removeChild(this.noteList.childNodes[0]);
+            }
+            octopus.getNotes().forEach((note, i) =>{
+                var noteItem = document.createElement("li");
+                noteItem.className = "note";
+                noteItem.innerText = note.content;
+                this.noteList.appendChild(noteItem);
             });
-            this.noteList.html( htmlStr );
         }
     };
 
     octopus.init();
-});
+})();
