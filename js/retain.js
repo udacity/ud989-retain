@@ -1,13 +1,13 @@
-$(function(){
+(function(){
 
-    var model = {
+    const model = {
         init: function() {
             if (!localStorage.notes) {
                 localStorage.notes = JSON.stringify([]);
             }
         },
         add: function(obj) {
-            var data = JSON.parse(localStorage.notes);
+            const data = JSON.parse(localStorage.notes);
             data.push(obj);
             localStorage.notes = JSON.stringify(data);
         },
@@ -17,7 +17,7 @@ $(function(){
     };
 
 
-    var octopus = {
+    const octopus = {
         addNewNote: function(noteStr) {
             model.add({
                 content: noteStr
@@ -36,11 +36,11 @@ $(function(){
     };
 
 
-    var view = {
+    const view = {
         init: function() {
             this.noteList = $('#notes');
-            var newNoteForm = $('#new-note-form');
-            var newNoteContent = $('#new-note-content');
+            const newNoteForm = $('#new-note-form');
+            const newNoteContent = $('#new-note-content');
             newNoteForm.submit(function(e){
                 octopus.addNewNote(newNoteContent.val());
                 newNoteContent.val('');
@@ -49,7 +49,7 @@ $(function(){
             view.render();
         },
         render: function(){
-            var htmlStr = '';
+            const htmlStr = '';
             octopus.getNotes().forEach(function(note){
                 htmlStr += '<li class="note">'+
                         note.content +
@@ -60,4 +60,4 @@ $(function(){
     };
 
     octopus.init();
-});
+}());
